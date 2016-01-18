@@ -1,14 +1,11 @@
 # Configuration
 \version 0.3b
 
-(
-    vp = project.helpers.verbosePrint
-    vp: "Loaded testRunner.em"
-)
+project.helpers.verbosePrint: "Loaded testRunner.em"
 
 (
-    emunit = package.emunit.core
+    core     = project.core
     coreSpec = project.test.coreSpec
 )
 
-do: test.run
+do: coreSpec.test.run

@@ -1,20 +1,23 @@
-println "Loaded core-spec"
+project.helpers.verbosePrint: "Loaded emUnit/core."
 
-emunit = package.em-unit.core
+emUnit = project.core
+assertions = project.assertions
+tests = project.tests
 
 assertion = [
-    parent    = emunit.assertionPrototype
     matcher   = ^(.eq)
-    context ^ = (name = "Harper")
-    subject   = ^(name + " is a good dog!")
+    subject   = ^(this.name + " is a good dog!")
     expected  = "Harper is a good dog!"
+    context   = ^(name = "Harper")
+    parent    = assertions.baseObject
+
 ]
 
 
 test = [
-  parent = emunit.testPrototype
-  description = "Harper test"
-  assertion = assertion
+    parent = tests.baseObject
+    description = "Harper test"
+    assertion = assertion
 ]
 
 # println: test.description

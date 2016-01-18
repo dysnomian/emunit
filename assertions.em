@@ -1,12 +1,12 @@
 # TODO: Document this!
-^{
-    vp = project.helpers.verbosePrint
-    vp: "Loaded emunit/assertions."
-}
+project.helpers.verbosePrint: "Loaded emUnit/assertions."
 
 baseObject = [
-    matcher ^ = (println "empty assertion matcher")
+    matcher ^ = println
     context ^ = null
     subject ^ = "empty assertion subject"
     expected  = "empty assertion expectation"
+
+    do: this.context
+    eval    ^ = this.matcher this.subject this.expected
 ]
